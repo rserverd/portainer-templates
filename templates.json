@@ -10,7 +10,10 @@
       "categories": ["health"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gnuhealth/logo/logo.png",
-      "image": "gnuhealth:latest",
+      "repository": {
+        "url": "https://github.com/rserverd/templates",
+        "stackfile": "stacks/gnuhealth/docker-stack.yaml"
+      },
       "env": [
         {
           "name": "POSTGRES_IMAGE",
