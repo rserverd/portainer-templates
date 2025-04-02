@@ -1,1 +1,32 @@
-
+{
+  "version": "3",
+  "templates": [
+    {
+      "id": 1,
+      "type": 1,
+      "title": "GNU Health",
+      "description": "Docker image for GNU Health a free/libre health and hospital information system.",
+      "note": "Default username is <b>root</b>.",
+      "categories": ["health"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gnuhealth/logo/logo.png",
+      "image": "gnuhealth:latest",
+      "env": [
+        {
+          "name": "POSTGRES_IMAGE",
+          "label": "Postgres Image",
+          "default": "code.rserverd.com/gruposolutema/postgres"
+        }
+        ],
+      "ports": ["8000/tcp"],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data"
+        },
+        {
+          "container": "/var/lib/trytond/db"
+        }
+      ]
+    }
+  ]
+}
