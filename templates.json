@@ -18,10 +18,65 @@
           "default": "code.rserverd.com/gruposolutema/postgres"
         },
         {
+          "name": "POSTGRES_TAG",
+          "label": "Postgres Tag",
+          "default": "16.6"
+        },
+        {
+          "name": "TIMEZONE",
+          "label": "Timezone",
+          "default": "America/Santo_Domingo"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "Database Name"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Database User"
+        },
+        {
+          "name": "DB_PASS",
+          "label": "Database Password for User"
+        },
+        {
+          "name": "SUPERUSER_PASS",
+          "label": "Database Password for Root"
+        },
+        {
+          "name": "GNUHEALTH_IMAGE",
+          "label": "GNU Health Image",
+          "default": "code.rserverd.com/gruposolutema/gnuhealth"
+        },
+        {
+          "name": "GNUHEALTH_TAG",
+          "label": "GNU Health Tag",
+          "default": "latest"
+        },
+        {
+          "name": "GNUHEALTH_LANGUAGE",
+          "label": "GNU Health Language",
+          "default": "es_419"
+        },
+        {
+          "name": "EMAIL",
+          "label": "Username/E-Mail",
+          "default": "admin"
+        },
+        {
+          "name": "PASSWORD",
+          "label": "Password",
+          "default": "admin"
+        },
+        {
+          "name": "URL",
+          "label": "URL",
+          "default": "demo.example.com"
+        },
+        {
           "name": "NETWORK",
           "label": "Network",
           "default": "proxy"
-
         }
       ],
       "ports": ["8000/tcp"],
