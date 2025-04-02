@@ -18,11 +18,12 @@
           "default": "code.rserverd.com/gruposolutema/postgres"
         },
         {
-          "default": "proxy",
+          "name": "NETWORK",
           "label": "Network",
-          "name": "NETWORK"
+          "default": "proxy"
+
         }
-        ],
+      ],
       "ports": ["8000/tcp"],
       "volumes": [
         {
