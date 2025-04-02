@@ -16,6 +16,11 @@
           "name": "POSTGRES_IMAGE",
           "label": "Postgres Image",
           "default": "code.rserverd.com/gruposolutema/postgres"
+        },
+        {
+          "default": "proxy",
+          "label": "Network",
+          "name": "NETWORK"
         }
         ],
       "ports": ["8000/tcp"],
