@@ -15,6 +15,11 @@
       },
       "env": [
         {
+          "name": "TIMEZONE",
+          "label": "Timezone",
+          "default": "America/Santo_Domingo"
+        },
+        {
           "name": "POSTGRES_IMAGE",
           "label": "Postgres Image",
           "default": "code.rserverd.com/gruposolutema/postgres"
@@ -23,11 +28,6 @@
           "name": "POSTGRES_TAG",
           "label": "Postgres Tag",
           "default": "16.6"
-        },
-        {
-          "name": "TIMEZONE",
-          "label": "Timezone",
-          "default": "America/Santo_Domingo"
         },
         {
           "name": "DB_NAME",
@@ -44,6 +44,12 @@
         {
           "name": "SUPERUSER_PASS",
           "label": "Database Password for Root"
+        },
+
+        {
+          "name": "DB_EXTENSION",
+          "label": "Database extensions",
+          "default": "unaccent"
         },
         {
           "name": "GNUHEALTH_IMAGE",
@@ -62,8 +68,8 @@
         },
         {
           "name": "EMAIL",
-          "label": "Username/E-Mail",
-          "default": "admin"
+          "label": "E-Mail",
+          "default": "admin@example.com"
         },
         {
           "name": "PASSWORD",
