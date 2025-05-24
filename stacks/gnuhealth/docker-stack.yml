@@ -28,11 +28,10 @@ services:
       DB_PASSWORD: ${DB_PASS}
       VIRTUAL_HOST: ${URL},www.${URL}
       LETSENCRYPT_HOST: ${URL},www.${URL}
-#    ports:
-#      - "8000:8000"
     volumes:
       - "gnuhealth-data:/var/lib/trytond/db"
-    command:      - /bin/bash
+    command:      
+      - /bin/bash
       - -c
       - |
         # Esperar a PostgreSQL
