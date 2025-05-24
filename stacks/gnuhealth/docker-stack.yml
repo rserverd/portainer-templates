@@ -30,22 +30,28 @@ services:
       LETSENCRYPT_HOST: ${URL},www.${URL}
     volumes:
       - "gnuhealth-data:/var/lib/trytond/db"      
-    command: "bash -c '(until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-postgres/${POSTGRES_PORT:-5432}; do sleep 0.5; done) 2>/dev/null; \
-      echo \"${PASSWORD:-admin}\" > /tmp/.passwd; \
-      TRYTONPASSFILE=/tmp/.passwd /entrypoint.sh trytond-admin -d \"${DB_NAME}\" --all --email \"${EMAIL}\" -l \"${GNUHEALTH_LANGUAGE}\" -vv; \
-      echo \"Instalando módulo country...\"; \
-      /entrypoint.sh trytond-admin -d \"${DB_NAME}\" -u country --activate-dependencies -vv; \
-      echo \"Módulo country instalado correctamente...\"; sleep 5; \
-      echo \"Importando datos de países en la base de datos: ${DB_NAME} ...\"; \
-      /entrypoint.sh trytond_import_countries -d \"${DB_NAME}\"; \
-      echo \"Paises importados correctamente en la base de datos: ${DB_NAME} ...\"; \
-      echo \"Instalando módulo currency...\"; \
-      /entrypoint.sh trytond-admin -d \"${DB_NAME}\" -u currency --activate-dependencies -vv; \
-      echo \"Módulo currency instalado correctamente...\"; sleep 5; \
-      echo \"Importando datos de monedas en la base de datos: ${DB_NAME} ...\"; \
-      /entrypoint.sh trytond_import_currencies -d \"${DB_NAME}\"; \
-      echo \"Monedas importadas correctamente en la base de datos: ${DB_NAME} ...\"; \
-      if command -v uwsgi &>/dev/null; then uwsgi --ini /etc/uwsgi.conf; else gunicorn --config=/etc/gunicorn.conf.py; fi'"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        (until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-postgres/${POSTGRES_PORT:-5432}; do sleep 0.5; done) 2>/dev/null
+        echo "${PASSWORD:-admin}" > /tmp/.passwd
+        TRYTONPASSFILE=/tmp/.passwd /entrypoint.sh trytond-admin -d "${DB_NAME}" --all --email "${EMAIL}" -l "${GNUHEALTH_LANGUAGE}" -vv
+        echo "Instalando módulo country..."
+        /entrypoint.sh trytond-admin -d "${DB_NAME}" -u country --activate-dependencies -vv
+        echo "Módulo country instalado correctamente..."
+        sleep 5
+        echo "Importando datos de países en la base de datos: ${DB_NAME} ..."
+        /entrypoint.sh trytond_import_countries -d "${DB_NAME}"
+        echo "Paises importados correctamente en la base de datos: ${DB_NAME} ..."
+        echo "Instalando módulo currency..."
+        /entrypoint.sh trytond-admin -d "${DB_NAME}" -u currency --activate-dependencies -vv
+        echo "Módulo currency instalado correctamente..."
+        sleep 5
+        echo "Importando datos de monedas en la base de datos: ${DB_NAME} ..."
+        /entrypoint.sh trytond_import_currencies -d "${DB_NAME}"
+        echo "Monedas importadas correctamente en la base de datos: ${DB_NAME} ..."
+        if command -v uwsgi &>/dev/null; then uwsgi --ini /etc/uwsgi.conf; else gunicorn --config=/etc/gunicorn.conf.py; fi
     depends_on:
       - postgres
 
@@ -58,7 +64,12 @@ services:
       DB_PASSWORD: ${DB_PASS} 
     volumes:
       - gnuhealth-data:/var/lib/trytond/db
-    command: "bash -c '(until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-server/8000; do sleep 0.5; done) 2>/dev/null; trytond-cron -d \"${DB_NAME}\"'"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        (until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-server/8000; do sleep 0.5; done) 2>/dev/null
+        trytond-cron -d "${DB_NAME}"
     depends_on:
       - postgres
       - server
