@@ -80,6 +80,11 @@
           "name": "URL",
           "label": "URL",
           "default": "demo.example.com"
+        },
+        {
+          "name": "NETWORK",
+          "label": "Network",
+          "default": "proxy"
         }
       ],
       "ports": ["8000/tcp"],
