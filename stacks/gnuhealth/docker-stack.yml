@@ -42,12 +42,7 @@ services:
       DB_PASSWORD: ${DB_PASS} 
     volumes:
       - gnuhealth-data:/var/lib/trytond/db
-    command:
-      - /bin/bash
-      - -c
-      - |
-        (until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-server/8000; do sleep 0.5; done) 2>/dev/null
-        trytond-cron -d "${DB_NAME}"
+    entrypoint: ["/entrypoint_cron.sh"]
     depends_on:
       - postgres
       - server
