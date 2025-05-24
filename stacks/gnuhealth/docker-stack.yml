@@ -1,0 +1,109 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: ${COMPOSE_PROJECT_NAME}-postgres
+    hostname: ${COMPOSE_PROJECT_NAME}-postgres
+    image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
+    restart: always
+    environment:
+      TIMEZONE: ${TIMEZONE}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      SUPERUSER_PASS: ${SUPERUSER_PASS}
+      DB_EXTENSION: ${DB_EXTENSION}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  server:
+    container_name: ${COMPOSE_PROJECT_NAME}-server
+    hostname: ${COMPOSE_PROJECT_NAME}-server
+    image: ${GNUHEALTH_IMAGE}:${GNUHEALTH_TAG}
+    restart: always
+    environment:
+      TZ: ${TIMEZONE}
+      VIRTUAL_PORT: 8000
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASS}
+      VIRTUAL_HOST: ${URL},www.${URL}
+      LETSENCRYPT_HOST: ${URL},www.${URL}
+#    ports:
+#      - "8000:8000"
+    volumes:
+      - "gnuhealth-data:/var/lib/trytond/db"
+    command:      - /bin/bash
+      - -c
+      - |
+        # Esperar a PostgreSQL
+        (until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-postgres/$${DB_PORT:=$${POSTGRES_PORT_5432_TCP_PORT:='5432'}}; do sleep 0.5; done) 2>/dev/null
+
+        # Configuración inicial
+        echo "${PASSWORD:-admin}" > /tmp/.passwd
+
+        # Instalar e inicializar base de datos
+        TRYTONPASSFILE=/tmp/.passwd /entrypoint.sh trytond-admin -d "${DB_NAME}" --all --email "${EMAIL}" -l "${GNUHEALTH_LANGUAGE}" -vv
+
+        # Instalar módulo country
+        echo "Instalando módulo country..."
+        /entrypoint.sh trytond-admin -d "${DB_NAME}" -u country --activate-dependencies -vv
+        echo "Módulo country instalado correctamente..."
+
+        # Esperar instalación completa
+        echo "Esperando..."
+        sleep 5
+
+        # Importar países después de instalar el módulo
+        echo "Importando datos de países en la base de datos: ${DB_NAME} ..."
+        /entrypoint.sh trytond_import_countries -d "${DB_NAME}"
+        echo "Paises importados correctamente en la base de datos: ${DB_NAME} ..."
+
+        # Instalar módulo currency
+        echo "Instalando módulo currency..."
+        /entrypoint.sh trytond-admin -d "${DB_NAME}" -u currency --activate-dependencies -vv
+        echo "Módulo currency instalado correctamente..."
+
+        # Esperar instalación completa
+        echo "Esperando..."
+        sleep 5
+
+        # Importar mónedas después de instalar el módulo
+        echo "Importando datos de monedas en la base de datos: ${DB_NAME} ..."
+        /entrypoint.sh trytond_import_currencies -d "${DB_NAME}"
+        echo "Monedas importadas correctamente en la base de datos: ${DB_NAME} ..."
+
+        # Iniciar servidor
+        if command -v uwsgi &>/dev/null; then uwsgi --ini /etc/uwsgi.conf; else gunicorn --config=/etc/gunicorn.conf.py; fi
+    depends_on:
+      - postgres
+
+  gnuhealth-cron:
+    container_name: ${COMPOSE_PROJECT_NAME}-cron
+    image: ${GNUHEALTH_IMAGE}:${GNUHEALTH_TAG}
+    restart: always
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASS} 
+    volumes:
+      - gnuhealth-data:/var/lib/trytond/db
+    command:
+      - /bin/bash
+      - -c
+      - |
+        (until echo > /dev/tcp/${COMPOSE_PROJECT_NAME}-server/8000; do sleep 0.5; done) 2>/dev/null
+        trytond-cron -d "${DB_NAME}"
+    depends_on:
+      - postgres
+      - server
+
+  mailhog:
+    container_name: ${COMPOSE_PROJECT_NAME}-mailhog
+    image: ${MAILHOG_IMAGE}:${MAILHOG_TAG}
+    restart: always
+    ports:
+      - ${MAILHOG_SMTP_PORT}:1025
+      - ${MAILHOG_HTTP_PORT}:8025
+
+volumes:
+  postgres-data:
+  gnuhealth-data:
