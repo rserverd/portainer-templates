@@ -169,7 +169,7 @@
         {
           "name": "POSTGRES_TAG",
           "label": "Postgres Tag",
-          "default": "16.6"
+          "default": "17.5"
         },
         {
           "name": "INITDB_LOCALE",
