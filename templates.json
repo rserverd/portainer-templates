@@ -4,6 +4,52 @@
     {
       "id": 1,
       "type": 1,
+      "title": "FastAPI",
+      "description": "Docker image for FastAPI app.",
+      "categories": ["health"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/fastapi/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/templates",
+        "stackfile": "stacks/fastapi/docker-stack.yml"
+      },
+      "env": [
+        {
+          "name": "TIMEZONE",
+          "label": "Timezone",
+          "default": "America/Santo_Domingo"
+        },
+        {
+          "name": "FASTAPI_IMAGE",
+          "label": "FastAPI Image",
+          "default": "code.rserverd.com/gruposolutema/fastapi"
+        },
+        {
+          "name": "FASTAPI_TAG",
+          "label": "FastAPI Tag",
+          "default": "latest"
+        },
+        {
+          "name": "URL",
+          "label": "URL",
+          "default": "demo.example.com"
+        },
+        {
+          "name": "NETWORK",
+          "label": "Network",
+          "default": "proxy"
+        }
+      ],
+      "ports": ["8000/tcp"],
+      "volumes": [
+        {
+          "container": "/code"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": 1,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
       "categories": ["health"],

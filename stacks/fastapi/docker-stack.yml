@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  fastapi:
+    container_name: ${COMPOSE_PROJECT_NAME}-app
+    hostname: ${COMPOSE_PROJECT_NAME}-app
+    image: ${FASTAPI_IMAGE}:${FASTAPI_TAG}
+    restart: always
+    environment:
+      TZ: ${TIMEZONE}
+      VIRTUAL_PORT: 8000
+      VIRTUAL_HOST: ${URL},www.${URL}
+      LETSENCRYPT_HOST: ${URL},www.${URL}
+    volumes:
+      - "fastapi-data:/code"
+
+volumes:
+  fastapi-data:
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true
