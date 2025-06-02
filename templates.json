@@ -142,6 +142,130 @@
           "container": "/var/lib/trytond/db"
         }
       ]
+    },
+    {
+      "id": 3,
+      "type": 3,
+      "title": "PostgreSQL",
+      "description": "Docker image for PostgreSQL.",
+      "categories": ["health"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/postgres/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/templates",
+        "stackfile": "stacks/postgres/docker-compose.yml"
+      },
+      "env": [
+        {
+          "name": "TIMEZONE",
+          "label": "Timezone",
+          "default": "America/Santo_Domingo"
+        },
+        {
+          "name": "POSTGRES_IMAGE",
+          "label": "Postgres Image",
+          "default": "code.rserverd.com/gruposolutema/postgres"
+        },
+        {
+          "name": "POSTGRES_TAG",
+          "label": "Postgres Tag",
+          "default": "16.6"
+        },
+        {
+          "name": "DB_NAME",
+          "label": "Database Name",
+          "default": "postgres_db"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Database Username",
+          "default": "postgres_userr"
+        },
+        {
+          "name": "DB_PASS",
+          "label": "Database Password",
+          "default": "postgres_password"
+        },
+        {
+          "name": "SUPERUSER_USER",
+          "label": "Database Root Username",
+          "default": "postgres_root_user"
+        },
+        {
+          "name": "SUPERUSER_PASS",
+          "label": "Database Root Password",
+          "default": "postgres_root_password"
+        },
+        {
+          "name": "DB_EXTENSION",
+          "label": "Database Extensions",
+          "default": "unaccent"
+        },
+        {
+          "name": "LISTEN_IP",
+          "label": "Listen IP",
+          "default": "*"
+        },
+        {
+          "name": "LISTEN_PORT",
+          "label": "Listen Port",
+          "default": "5432"
+        },
+        {
+          "name": "ENABLE_REPLICATION",
+          "label": "Enable Replication",
+          "default": "FALSE"
+        },
+        {
+          "name": "REPLICATION_IP_ALLOW",
+          "label": "Replication IP Allow",
+          "default": "0.0.0.0/0"
+        },
+        {
+          "name": "REPLICATION_MODE",
+          "label": "Replication Mode",
+          "default": "main"
+        },
+        {
+          "name": "REPLICATION_HOST",
+          "label": "Replication Host",
+          "default": "localhost"
+        },
+        {
+          "name": "REPLICATION_PORT",
+          "label": "Replication Port",
+          "default": "5432"
+        },
+        {
+          "name": "REPLICATION_TLS_MODE",
+          "label": "Replication TLS Mode",
+          "default": "prefer"
+        },
+        {
+          "name": "REPLICATION_USER",
+          "label": "Replication Username",
+          "default": "replicate"
+        },
+        {
+          "name": "REPLICATION_PASS",
+          "label": "Replication Password",
+          "default": "replicate"
+        },
+        {
+          "name": "NETWORK",
+          "label": "Network",
+          "default": "proxy"
+        }
+      ],
+      "ports": ["5432/tcp"],
+      "volumes": [
+        {
+          "container": "/var/lib/postgresql/data"
+        },
+        {
+          "container": "/logs"
+        }
+      ]
     }
   ]
 }
