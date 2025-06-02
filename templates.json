@@ -287,11 +287,6 @@
           "default": "zabbix"
         },
         {
-          "name": "VIRTUAL_PORT",
-          "label": "Virtual Port",
-          "default": "5432"
-        },
-        {
           "name": "URL",
           "label": "URL",
           "default": "postgres.example.com"
