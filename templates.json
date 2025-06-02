@@ -172,6 +172,11 @@
           "default": "16.6"
         },
         {
+          "name": "INITDB_LOCALE",
+          "label": "Init Locale",
+          "default": "en"
+        },
+        {
           "name": "DB_NAME",
           "label": "Database Name",
           "default": "postgres_db"
@@ -179,7 +184,7 @@
         {
           "name": "DB_USER",
           "label": "Database Username",
-          "default": "postgres_userr"
+          "default": "postgres_user"
         },
         {
           "name": "DB_PASS",
@@ -250,6 +255,21 @@
           "name": "REPLICATION_PASS",
           "label": "Replication Password",
           "default": "replicate"
+        },
+        {
+          "name": "CONTAINER_ENABLE_MONITORING",
+          "label": "Enable Container Monitoring",
+          "default": "TRUE"
+        },
+        {
+          "name": "MONITOR_USER",
+          "label": "Monitor Username",
+          "default": "zbx_monitor"
+        },
+        {
+          "name": "MONITOR_PASS",
+          "label": "Monitor Password",
+          "default": "zabbix"
         },
         {
           "name": "NETWORK",

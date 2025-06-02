@@ -8,6 +8,7 @@ services:
     restart: always
     environment:
       TIMEZONE: ${TIMEZONE}
+      INITDB_LOCALE: ${INITDB_LOCALE}
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
@@ -22,6 +23,9 @@ services:
       REPLICATION_PORT: ${REPLICATION_PORT}
       REPLICATION_USER: ${REPLICATION_USER}
       REPLICATION_PASS: ${REPLICATION_PASS}
+      CONTAINER_ENABLE_MONITORING: ${CONTAINER_ENABLE_MONITORING}
+      MONITOR_USER: ${MONITOR_USER}
+      MONITOR_PASS: ${MONITOR_PASS}
     volumes:
       - postgres-logs:/logs
       - postgres-data:/var/lib/postgresql/data
