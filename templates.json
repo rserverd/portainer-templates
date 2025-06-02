@@ -177,6 +177,21 @@
           "default": "en"
         },
         {
+          "name": "INITDB_ENCODING",
+          "label": "Init Encoding",
+          "default": "UTF-8"
+        },
+        {
+          "name": "INITDB_LC_COLLATE",
+          "label": "Init LC Collate",
+          "default": "C"
+        },
+        {
+          "name": "INITDB_LC_CTYPE",
+          "label": "Init LC CType",
+          "default": "C"
+        },
+        {
           "name": "DB_NAME",
           "label": "Database Name",
           "default": "postgres_db"
