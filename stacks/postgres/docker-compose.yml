@@ -6,6 +6,8 @@ services:
     hostname: ${COMPOSE_PROJECT_NAME}-postgres
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     restart: always
+    ports:
+      - ${POSTGRES_PORT}:5432
     environment:
       TIMEZONE: ${TIMEZONE}
       INITDB_LOCALE: ${INITDB_LOCALE}

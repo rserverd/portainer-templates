@@ -292,6 +292,11 @@
           "default": "postgres.example.com"
         },
         {
+          "name": "POSTGRES_PORT",
+          "label": "Postgres Port",
+          "default": "5432"
+        },
+        {
           "name": "NETWORK",
           "label": "Network",
           "default": "proxy"
