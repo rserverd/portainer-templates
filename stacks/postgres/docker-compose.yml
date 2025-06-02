@@ -29,6 +29,9 @@ services:
       CONTAINER_ENABLE_MONITORING: ${CONTAINER_ENABLE_MONITORING}
       MONITOR_USER: ${MONITOR_USER}
       MONITOR_PASS: ${MONITOR_PASS}
+      VIRTUAL_PORT: ${VIRTUAL_PORT}
+      VIRTUAL_HOST: ${URL},www.${URL}
+      LETSENCRYPT_HOST: ${URL},www.${URL}
     volumes:
       - postgres-logs:/logs
       - postgres-data:/var/lib/postgresql/data
