@@ -9,8 +9,6 @@ services:
       - data:/data
     stdin_open: true
     tty: true
-    labels:
-      - traefik.enable=false
 
   runner:
     name: ${COMPOSE_PROJECT_NAME}-runner
@@ -24,8 +22,6 @@ services:
     volumes:
       - data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - traefik.enable=false
 
 volumes:
   config:

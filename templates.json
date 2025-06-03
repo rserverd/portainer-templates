@@ -148,7 +148,12 @@
           "label": "Network Name",
           "name": "NETWORK"
         }
-       ]
+       ],
+      "volumes": [
+        {
+          "container": "/data"
+        }
+      ]
     },
     {
       "id": 4,
