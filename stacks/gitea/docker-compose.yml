@@ -35,9 +35,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.gitea.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
       - "traefik.http.routers.gitea.entrypoints=websecure"
-#      - "traefik.http.routers.gitea.tls.certresolver=myresolver"
+      - "traefik.http.routers.gitea.tls.certresolver=myresolver"
       - "traefik.http.services.gitea-websecure.loadbalancer.server.port=${PORT}"
-#      - "traefik.http.routers.gitea.service=gitea"
+      - "traefik.http.routers.gitea.service=gitea"
 
 volumes:
   db:
