@@ -52,7 +52,7 @@
       "type": 3,
       "title": "Gitea",
       "description": "Gitea setup with a MySQL database",
-      "categories": ["Development", "Project-Management"],
+      "categories": ["Development"],
       "note": "Deploys a Gitea instance connected to a MySQL database.",
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea/logo/logo.png",
