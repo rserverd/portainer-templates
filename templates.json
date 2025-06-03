@@ -6,7 +6,7 @@
       "type": 3,
       "title": "FastAPI",
       "description": "Docker image for FastAPI app.",
-      "categories": ["health"],
+      "categories": ["Web Framework"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/fastapi/logo/logo.png",
       "repository": {
@@ -121,7 +121,7 @@
       "type": 3,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
-      "categories": ["health"],
+      "categories": ["Health"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gnuhealth/logo/logo.png",
       "repository": {
@@ -217,7 +217,7 @@
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",
-      "categories": ["health"],
+      "categories": ["Database"],
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/postgres/logo/logo.png",
       "repository": {
