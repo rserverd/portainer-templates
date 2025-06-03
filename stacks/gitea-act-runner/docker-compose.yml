@@ -1,7 +1,7 @@
 version: "3"
 services:
   generate-config:
-    name: ${COMPOSE_PROJECT_NAME}-generate-config
+    container_name: ${COMPOSE_PROJECT_NAME}-generate-config
     image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
     entrypoint: ["/bin/sh", "-c"]
     command: ["act_runner generate-config > /data/config.yaml"]
@@ -11,7 +11,7 @@ services:
     tty: true
 
   runner:
-    name: ${COMPOSE_PROJECT_NAME}-runner
+    container_name: ${COMPOSE_PROJECT_NAME}-runner
     image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
     restart: always
     command: act_runner generate-config > /data/config.yaml
