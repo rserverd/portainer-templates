@@ -136,6 +136,7 @@
           "name": "GITEA_ACT_RUNNER_TAG"
         },
         {
+          "default": "https://code.example.com",
           "label": "Gitea Instance URL",
           "name": "GITEA_INSTANCE_URL"
         },
