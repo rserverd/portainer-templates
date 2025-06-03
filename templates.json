@@ -47,8 +47,77 @@
         }
       ]
     },
-    {
+      {
       "id": 2,
+      "type": 3,
+      "title": "Gitea",
+      "description": "Gitea setup with a MySQL database",
+      "categories": ["Development", "Project-Management"],
+      "note": "Deploys a Gitea instance connected to a MySQL database.",
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/portainer-templates",
+        "stackfile": "stacks/gitea/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "mysql",
+          "label": "MySQL database image",
+          "name": "MYSQL_IMAGE"
+        },
+        {
+          "default": "9.1.0",
+          "label": "MySQL Database Tag",
+          "name": "MYSQL_TAG"
+        },
+        {
+          "default": "gitea_example",
+          "label": "MySQL Database Username",
+          "name": "MYSQL_USER"
+        },
+        {
+          "label": "MySQL Database Password for User",
+          "name": "MYSQL_PASSWORD"
+        },
+        {
+          "label": "Database Root Password",
+          "name": "MYSQL_ROOT_PASSWORD"
+        },
+        {
+          "default": "gitea_example",
+          "label": "MySQL Database Name",
+          "name": "MYSQL_DATABASE"
+        },
+        {
+          "default": "gitea/gitea",
+          "label": "Gitea Image",
+          "name": "GITEA_IMAGE"
+        },
+        {
+          "default": "1.23.1",
+          "label": "Gitea tag",
+          "name": "GITEA_TAG"
+        },
+        {
+          "default": "2222",
+          "label": "Gitea SSH Port",
+          "name": "GITEA_SSH_PORT"
+        },
+        {
+          "default": "code.example.com",
+          "label": "Domain",
+          "name": "DOMAIN"
+        },
+        {
+          "default": "proxy",
+          "label": "Network Name",
+          "name": "NETWORK"
+        }
+      ]
+    },
+    {
+      "id": 3,
       "type": 3,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
