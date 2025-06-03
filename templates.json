@@ -57,7 +57,7 @@
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/portainer-templates",
+        "url": "https://github.com/rserverd/templates",
         "stackfile": "stacks/gitea/docker-compose.yml"
       },
       "env": [
