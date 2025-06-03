@@ -114,6 +114,45 @@
     {
       "id": 3,
       "type": 3,
+      "title": "Gitea Act Runner",
+      "description": "Gitea Runner Setup",
+      "note": "Deploys a Gitea Act Runner.",
+      "categories": ["CI/CD"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea-act-runner/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/templates",
+        "stackfile": "stacks/gitea-act-runner/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "gitea/act_runner",
+          "label": "Gitea Act Runner Image",
+          "name": "GITEA_ACT_RUNNER_IMAGE"
+        },
+        {
+          "default": "0.2.11",
+          "label": "Gitea Act Runner Tag",
+          "name": "GITEA_ACT_RUNNER_TAG"
+        },
+        {
+          "label": "Gitea Instance URL",
+          "name": "GITEA_INSTANCE_URL"
+        },
+        {
+          "label": "Gitea Instance Registration Token",
+          "name": "GITEA_RUNNER_REGISTRATION_TOKEN"
+        },
+        {
+          "default": "proxy",
+          "label": "Network Name",
+          "name": "NETWORK"
+        }
+       ]
+    },
+    {
+      "id": 4,
+      "type": 3,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
       "categories": ["Health"],
@@ -208,7 +247,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 5,
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",

@@ -1,0 +1,37 @@
+version: "3"
+services:
+  generate-config:
+    name: ${COMPOSE_PROJECT_NAME}-generate-config
+    image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["act_runner generate-config > /data/config.yaml"]
+    volumes:
+      - data:/data
+    stdin_open: true
+    tty: true
+    labels:
+      - traefik.enable=false
+
+  runner:
+    name: ${COMPOSE_PROJECT_NAME}-runner
+    image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
+    restart: always
+    command: act_runner generate-config > /data/config.yaml
+    environment:
+      CONFIG_FILE: /data/config.yaml
+      GITEA_INSTANCE_URL: "${GITEA_INSTANCE_URL}"
+      GITEA_RUNNER_REGISTRATION_TOKEN: "${GITEA_RUNNER_REGISTRATION_TOKEN}"
+    volumes:
+      - data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=false
+
+volumes:
+  config:
+  data:
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true
