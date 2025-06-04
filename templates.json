@@ -27,7 +27,31 @@
         {
           "name": "FASTAPI_TAG",
           "label": "FastAPI Tag",
-          "default": "latest"
+          "default": "1.0.0"
+        },
+        {
+          "name": "DB_USER",
+          "label": "Database Username",
+        },
+        {
+          "name": "DB_PASSWORD",
+          "label": "Database Password",
+        },
+        {
+          "name": "DB_HOST",
+          "label": "Database Host",
+        },
+        {
+          "name": "DB_PORT",
+          "label": "Database Host Port",
+        },
+        {
+          "name": "DB_NAME",
+          "label": "Database Name",
+        },
+        {
+          "name": "PRODUCT_PRICE_DECIMAL",
+          "label": "Product Price Decimal",
         },
         {
           "name": "URL",
@@ -40,7 +64,7 @@
           "default": "proxy"
         }
       ],
-      "ports": ["8000/tcp"],
+      "ports": ["80/tcp"],
       "volumes": [
         {
           "container": "/code"

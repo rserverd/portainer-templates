@@ -8,11 +8,26 @@ services:
     restart: always
     environment:
       TZ: ${TIMEZONE}
-      VIRTUAL_PORT: 8000
-      VIRTUAL_HOST: ${URL},www.${URL}
-      LETSENCRYPT_HOST: ${URL},www.${URL}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      PRODUCT_PRICE_DECIMAL: ${PRODUCT_PRICE_DECIMAL}
     volumes:
       - "fastapi-data:/code"
+    labels:
+      - "traefik.enable=true"
+      # Redirecciona HTTP -> HTTPS
+      - "traefik.http.routers.fastapi-web.rule=Host(`${URL}`) || Host(`www.${URL}`)"
+      - "traefik.http.routers.fastapi-web.entrypoints=web"
+      - "traefik.http.routers.fastapi-web.middlewares=fastapi-https"
+      - "traefik.http.middlewares.fastapi-https.redirectscheme.scheme=https"
+      # HTTPS (con SSL automático)
+      - "traefik.http.routers.fastapi-secure.rule=Host(`${URL}`) || Host(`www.${URL}`)"
+      - "traefik.http.routers.fastapi-secure.entrypoints=websecure"
+      - "traefik.http.routers.fastapi-secure.tls=true"
+      - "traefik.http.routers.fastapi-secure.tls.certresolver=myresolver"
 
 volumes:
   fastapi-data:
