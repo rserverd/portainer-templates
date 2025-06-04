@@ -19,7 +19,7 @@ services:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
       DB_NAME: ${DB_NAME}
-        : ${PRODUCT_PRICE_DECIMAL}
+      PRODUCT_PRICE_DECIMAL: ${PRODUCT_PRICE_DECIMAL}
     volumes:
       - "fastapi-data:/code"
     command: >
