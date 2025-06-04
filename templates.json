@@ -31,27 +31,27 @@
         },
         {
           "name": "DB_USER",
-          "label": "Database Username",
+          "label": "Database Username"
         },
         {
           "name": "DB_PASSWORD",
-          "label": "Database Password",
+          "label": "Database Password"
         },
         {
           "name": "DB_HOST",
-          "label": "Database Host",
+          "label": "Database Host"
         },
         {
           "name": "DB_PORT",
-          "label": "Database Host Port",
+          "label": "Database Host Port"
         },
         {
           "name": "DB_NAME",
-          "label": "Database Name",
+          "label": "Database Name"
         },
         {
           "name": "PRODUCT_PRICE_DECIMAL",
-          "label": "Product Price Decimal",
+          "label": "Product Price Decimal"
         },
         {
           "name": "URL",
