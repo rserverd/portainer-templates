@@ -30,6 +30,14 @@
           "default": "1.0.0"
         },
         {
+          "name": "OVPN_AUTH",
+          "label": "OpenVPN Auth"
+        },
+        {
+          "name": "OVPN_KEY_PASS",
+          "label": "OpenVPN Key Pass"
+        },
+        {
           "name": "DB_USER",
           "label": "Database Username"
         },
