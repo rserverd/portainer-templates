@@ -354,8 +354,8 @@
         },
         {
           "default": "odoo.example.com",
-          "label": "URL",
-          "name": "URL"
+          "label": "ODOO_URL",
+          "name": "ODOO_URL"
         },
         {
           "default": "proxy",
