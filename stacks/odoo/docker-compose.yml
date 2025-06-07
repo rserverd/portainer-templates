@@ -1,0 +1,56 @@
+services:
+  postgres:
+    container_name: ${COMPOSE_PROJECT_NAME}-postgres
+    image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      SUPERUSER_USER: ${SUPERUSER_USER}
+      SUPERUSER_PASS: ${SUPERUSER_PASS}
+      DB_EXTENSION: ${DB_EXTENSION}
+    restart: unless-stopped
+
+  odoo:
+    container_name: ${COMPOSE_PROJECT_NAME}-app
+    image: ${ODOO_IMAGE}:${ODOO_TAG}
+    hostname: ${COMPOSE_PROJECT_NAME}-app
+    shm_size: ${SHM_SIZE}
+    restart: unless-stopped
+    links:
+      - postgres:postgres
+    tty: true
+    volumes:
+      - extra-addons:/mnt/extra-addons
+      - backups:/mnt/backups
+    command: -- --dev=reload
+    environment:
+      HOST: ${COMPOSE_PROJECT_NAME}-postgres
+      USER: ${SUPERUSER_USER}
+      PASSWORD: ${SUPERUSER_PASS}
+    labels:
+      - "traefik.enable=true"
+      # Redirecciona HTTP -> HTTPS
+      - "traefik.http.routers.odoo-web.rule=Host(`${URL}`) || Host(`www.${URL}`)"
+      - "traefik.http.routers.odoo-web.entrypoints=web"
+      - "traefik.http.routers.odoo-web.middlewares=odoo-https"
+      - "traefik.http.middlewares.odoo-https.redirectscheme.scheme=https"
+      # HTTPS (con SSL automático)
+      - "traefik.http.routers.odoo-secure.rule=Host(`${URL}`) || Host(`www.${URL}`)"
+      - "traefik.http.routers.odoo-secure.entrypoints=websecure"
+      - "traefik.http.routers.odoo-secure.tls=true"
+      - "traefik.http.routers.odoo-secure.tls.certresolver=myresolver"
+      # Servicio backend Odoo
+      - "traefik.http.services.odoo-secure.loadbalancer.server.port=8069"
+
+volumes:
+  postgres-data:
+  extra-addons:
+  backups:
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true
