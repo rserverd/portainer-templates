@@ -30,6 +30,15 @@ services:
       HOST: ${COMPOSE_PROJECT_NAME}-postgres
       USER: ${SUPERUSER_USER}
       PASSWORD: ${SUPERUSER_PASS}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -X HEAD -I http://127.0.0.1:8069"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     labels:
       - "traefik.enable=true"
       # Redirecciona HTTP -> HTTPS
