@@ -132,6 +132,11 @@
           "name": "GITEA_TAG"
         },
         {
+          "default": "git",
+          "label": "User",
+          "name": "USER"
+        },
+        {
           "default": "1000",
           "label": "User UID",
           "name": "USER_UID"

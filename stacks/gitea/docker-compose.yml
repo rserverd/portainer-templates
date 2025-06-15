@@ -26,6 +26,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
+      USER: ${USER}
       USER_UID: ${USER_UID}
       USER_GID: ${USER_GID}
       GITEA__database__DB_TYPE: mysql
