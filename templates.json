@@ -104,6 +104,10 @@
           "name": "MYSQL_TAG"
         },
         {
+          "label": "Database Root Password",
+          "name": "MYSQL_ROOT_PASSWORD"
+        },
+        {
           "default": "gitea_example",
           "label": "MySQL Database Username",
           "name": "MYSQL_USER"
@@ -111,10 +115,6 @@
         {
           "label": "MySQL Database Password for User",
           "name": "MYSQL_PASSWORD"
-        },
-        {
-          "label": "Database Root Password",
-          "name": "MYSQL_ROOT_PASSWORD"
         },
         {
           "default": "gitea_example",
@@ -130,6 +130,51 @@
           "default": "1.23.1",
           "label": "Gitea tag",
           "name": "GITEA_TAG"
+        },
+        {
+          "default": "1000",
+          "label": "User UID",
+          "name": "USER_UID"
+        },
+        {
+          "default": "1000",
+          "label": "User GID",
+          "name": "USER_GID"
+        },
+        {
+          "default": "false",
+          "label": "Mailer Enabled",
+          "name": "MAILER_ENABLED"
+        },
+        {
+          "default": "Example, Inc",
+          "label": "Gitea Mailer From",
+          "name": "GITEA_FROM"
+        },
+        {
+          "default": "smtps",
+          "label": "Gitea Mailer Protocol",
+          "name": "GITEA_PROTOCOL"
+        },
+        {
+          "default": "smtp.example.com",
+          "label": "Gitea SMTP Address",
+          "name": "GITEA_SMTP_ADDR"
+        },
+        {
+          "default": "465",
+          "label": "Gitea SMTP Port",
+          "name": "GITEA_SMTP_PORT"
+        },
+        {
+          "default": "example@example.com",
+          "label": "Gitea SMTP User",
+          "name": "GITEA_USER"
+        },
+        {
+          "default": "Password",
+          "label": "Gitea SMTP Password",
+          "name": "GITEA_PASSWD"
         },
         {
           "default": "code.example.com",
