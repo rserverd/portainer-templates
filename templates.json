@@ -235,6 +235,9 @@
       "volumes": [
         {
           "container": "/data"
+        },
+        {
+          "container": "/tmp/buildx-cache"
         }
       ]
     },
