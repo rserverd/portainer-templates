@@ -213,7 +213,7 @@
           "name": "GITEA_ACT_RUNNER_IMAGE"
         },
         {
-          "default": "0.2.11-dind-rootless",
+          "default": "0.2.11",
           "label": "Gitea Act Runner Tag",
           "name": "GITEA_ACT_RUNNER_TAG"
         },
