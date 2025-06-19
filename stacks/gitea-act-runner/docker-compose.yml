@@ -15,7 +15,7 @@ services:
     image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
     privileged: true
     restart: always
-    command: act_runner generate-config > /data/config.yaml
+#    command: act_runner generate-config > /data/config.yaml
     environment:
 #      CONFIG_FILE: /data/config.yaml
       DOCKER_HOST: unix:///run/user/1000/docker.sock
