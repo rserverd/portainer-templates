@@ -191,6 +191,23 @@
           "label": "Network Name",
           "name": "NETWORK"
         }
+      ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql"
+        },
+        {
+          "container": "/tmp/buildx-cache"
+        },
+        {
+          "container": "/etc/gitea"
+        },
+        {
+          "container": "/data/gitea/custom"
+        },
+        {
+          "container": "/data"
+        }
       ]
     },
     {
