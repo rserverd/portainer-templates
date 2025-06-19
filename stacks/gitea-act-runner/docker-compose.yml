@@ -1,22 +1,19 @@
 version: "3"
 services:
-#  generate-config:
-#    container_name: ${COMPOSE_PROJECT_NAME}-generate-config
-#    image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
-#    entrypoint: ["/bin/sh", "-c"]
-#    command: ["act_runner generate-config > /data/config.yaml"]
-#    volumes:
-#      - data:/data
-#    stdin_open: true
-#    tty: true
+  generate-config:
+    container_name: ${COMPOSE_PROJECT_NAME}-generate-config
+    image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["act_runner generate-config > /data/config.yaml"]
+    volumes:
+      - data:/data
+    stdin_open: true
+    tty: true
 
   runner:
     container_name: ${COMPOSE_PROJECT_NAME}-runner
     image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
-    privileged: true
     restart: always
-    command: sh -c "act_runner generate-config > /data/config.yaml && act_runner daemon"
-    #command: act_runner generate-config > /data/config.yaml
     environment:
       CONFIG_FILE: /data/config.yaml
       DOCKER_HOST: unix:///var/run/docker.sock
