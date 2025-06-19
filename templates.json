@@ -213,7 +213,7 @@
           "name": "GITEA_ACT_RUNNER_IMAGE"
         },
         {
-          "default": "0.2.11",
+          "default": "0.2.11-dind-rootless",
           "label": "Gitea Act Runner Tag",
           "name": "GITEA_ACT_RUNNER_TAG"
         },
@@ -225,6 +225,10 @@
         {
           "label": "Gitea Instance Registration Token",
           "name": "GITEA_RUNNER_REGISTRATION_TOKEN"
+        },
+        {
+          "label": "Gitea Runner Name",
+          "name": "GITEA_RUNNER_NAME"
         },
         {
           "default": "proxy",
