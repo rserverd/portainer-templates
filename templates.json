@@ -227,6 +227,11 @@
           "name": "GITEA_RUNNER_REGISTRATION_TOKEN"
         },
         {
+          "default": "24h",
+          "label": "Gitea Action Timeout",
+          "name": "TIMEOUT_OVERRIDE"
+        },
+        {
           "default": "proxy",
           "label": "Network Name",
           "name": "NETWORK"
