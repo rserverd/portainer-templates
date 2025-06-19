@@ -232,6 +232,56 @@
           "name": "TIMEOUT_OVERRIDE"
         },
         {
+          "default": "2",
+          "label": "Gitea Capacity Tasks",
+          "name": "CAPACITY"
+        },
+        {
+          "default": "60s",
+          "label": "Gitea Shutdown Timeout",
+          "name": "SHUTDOWN_TIMEOUT"
+        },
+        {
+          "default": "false",
+          "label": "Gitea Insecure",
+          "name": "INSECURE"
+        },
+        {
+          "default": "60s",
+          "label": "Gitea Fetch Timeout",
+          "name": "FETCH_TIMEOUT"
+        },
+        {
+          "default": "60s",
+          "label": "Gitea Fetch Timeout",
+          "name": "FETCH_TIMEOUT"
+        },
+        {
+          "default": "true",
+          "label": "Gitea Privileged",
+          "name": "PRIVILEGED"
+        },
+        {
+          "default": "[/tmp/buildx-cache,/data]",
+          "label": "Gitea Valid Volumes",
+          "name": "VALID_VOLUMES"
+        },
+        {
+          "default": "unix:///var/run/docker.sock",
+          "label": "Gitea Docker Host",
+          "name": "DOCKER_HOST_VAR"
+        },
+        {
+          "default": "false",
+          "label": "Gitea Force Pull",
+          "name": "FORCE_PULL"
+        },
+        {
+          "default": "true",
+          "label": "Gitea Force Rebuild",
+          "name": "FORCE_REBUILD"
+        },
+        {
           "default": "proxy",
           "label": "Network Name",
           "name": "NETWORK"
