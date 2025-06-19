@@ -21,7 +21,7 @@ services:
       DOCKER_HOST: unix:///run/user/1000/docker.sock
       GITEA_INSTANCE_URL: ${GITEA_INSTANCE_URL}
       GITEA_RUNNER_REGISTRATION_TOKEN: ${GITEA_RUNNER_REGISTRATION_TOKEN}
-      GITEA_RUNNER_NAME: ${GITEA_RUNNER_NAME}
+      GITEA_RUNNER_NAME: ${COMPOSE_PROJECT_NAME}
     volumes:
       - cache:/tmp/buildx-cache
       - data:/data
