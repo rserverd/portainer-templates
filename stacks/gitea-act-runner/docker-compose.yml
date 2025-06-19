@@ -17,7 +17,7 @@ services:
     restart: always
 #    command: act_runner generate-config > /data/config.yaml
     environment:
-#      CONFIG_FILE: /data/config.yaml
+      CONFIG_FILE: /data/config.yaml
       DOCKER_HOST: unix:///run/user/1000/docker.sock
       GITEA_INSTANCE_URL: ${GITEA_INSTANCE_URL}
       GITEA_RUNNER_REGISTRATION_TOKEN: ${GITEA_RUNNER_REGISTRATION_TOKEN}
