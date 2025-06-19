@@ -4,7 +4,13 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}-generate-config
     image: ${GITEA_ACT_RUNNER_IMAGE}:${GITEA_ACT_RUNNER_TAG}
     entrypoint: ["/bin/sh", "-c"]
-    command: ["act_runner generate-config > /data/config.yaml"]
+    #command: ["act_runner generate-config > /data/config.yaml"]
+    command:
+      - |
+        act_runner generate-config > /data/config.yaml && \
+        sed -i "s/^[[:space:]]*timeout: .*/timeout: ${TIMEOUT_OVERRIDE}/" /data/config.yaml
+    environment:
+      TIMEOUT_OVERRIDE: ${TIMEOUT_OVERRIDE}
     volumes:
       - data:/data
     stdin_open: true
