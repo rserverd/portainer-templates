@@ -227,10 +227,6 @@
           "name": "GITEA_RUNNER_REGISTRATION_TOKEN"
         },
         {
-          "label": "Gitea Runner Name",
-          "name": "GITEA_RUNNER_NAME"
-        },
-        {
           "default": "proxy",
           "label": "Network Name",
           "name": "NETWORK"
