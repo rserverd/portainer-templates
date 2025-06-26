@@ -423,6 +423,10 @@
       },
       "env": [
         {
+          "label": "Instance Name",
+          "name": "INSTANCE_NAME"
+        },
+        {
           "default": "code.rserverd.com/gruposolutema/postgres",
           "label": "PostgreSQL Image",
           "name": "POSTGRES_IMAGE"
@@ -459,14 +463,15 @@
           "default": "unaccent", 
           "label": "Database Extension",
           "name": "DB_EXTENSION"
-        },        
+        },  
         {
           "default": "code.rserverd.com/gruposolutema/odoo",
           "label": "Odoo Image",
           "name": "ODOO_IMAGE"
         },
+    
         {
-          "default": "16.0-20241209",
+          "default": "16.0-20250618",
           "label": "Odoo Tag",
           "name": "ODOO_TAG"
         },
