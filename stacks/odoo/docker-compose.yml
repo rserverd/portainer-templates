@@ -42,17 +42,17 @@ services:
     labels:
       - "traefik.enable=true"
       # Redirecciona HTTP -> HTTPS
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${ODOO_URL}`) || Host(`www.${ODOO_URL}`)"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=web"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.middlewares=${COMPOSE_PROJECT_NAME}-https"
-      - "traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}.rule=Host(`${ODOO_URL}`) || Host(`www.${ODOO_URL}`)"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}.entrypoints=web"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}.middlewares=${COMPOSE_PROJECT_NAME}-https"
+      - "traefik.http.middlewares.{{ .Env.INSTANCE_NAME }}-https.redirectscheme.scheme=https"
       # HTTPS (con SSL automático)
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${ODOO_URL}`) || Host(`www.${ODOO_URL}`)"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.tls=true"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-secure.tls.certresolver=myresolver"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}-secure.rule=Host(`${ODOO_URL}`) || Host(`www.${ODOO_URL}`)"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}-secure.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}-secure.tls=true"
+      - "traefik.http.routers.{{ .Env.INSTANCE_NAME }}-secure.tls.certresolver=myresolver"
       # Servicio backend Odoo
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}-secure.loadbalancer.server.port=8069"
+      - "traefik.http.services.{{ .Env.INSTANCE_NAME }}-secure.loadbalancer.server.port=8069"
 
 volumes:
   postgres-data:
