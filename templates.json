@@ -418,7 +418,7 @@
       "platform": "linux",
       "logo": "https://raw.githubusercontent.com/gruposolutema/portainer-templates/main/stacks/odoo/logo/logo.png",
       "repository": {
-        "url": "https://github.com/gruposolutema/portainer-templates",
+        "url": "https://github.com/rserverd/portainer-templates",
         "stackfile": "stacks/odoo/docker-compose.yml"
       },
       "env": [
