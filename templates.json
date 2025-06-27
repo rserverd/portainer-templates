@@ -423,10 +423,6 @@
       },
       "env": [
         {
-          "label": "Instance Name",
-          "name": "INSTANCE_NAME"
-        },
-        {
           "default": "code.rserverd.com/gruposolutema/postgres",
           "label": "PostgreSQL Image",
           "name": "POSTGRES_IMAGE"
