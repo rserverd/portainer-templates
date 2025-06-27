@@ -433,6 +433,16 @@
           "name": "POSTGRES_TAG"
         },
         {
+          "default": "*",
+          "label": "Listen Addresses",
+          "name": "LISTEN_IP"
+        },
+        {
+          "default": "5432",
+          "label": "Listen Port",
+          "name": "LISTEN_PORT"
+        },
+        {
           "default": "odoo",
           "label": "Database Username",
           "name": "DB_USER"
