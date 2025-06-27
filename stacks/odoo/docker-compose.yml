@@ -3,7 +3,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}-postgres
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     volumes:
-      - ${COMPOSE_PROJECT_NAME}-postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     environment:
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
@@ -23,8 +23,8 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ${COMPOSE_PROJECT_NAME}-extra-addons:/mnt/extra-addons
-      - ${COMPOSE_PROJECT_NAME}-backups:/mnt/backups
+      - extra-addons:/mnt/extra-addons
+      - backups:/mnt/backups
     command: -- --dev=reload
     environment:
       HOST: ${COMPOSE_PROJECT_NAME}-postgres
@@ -55,9 +55,9 @@ services:
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8069"
 
 volumes:
-  ${COMPOSE_PROJECT_NAME}-postgres-data:
-  ${COMPOSE_PROJECT_NAME}-extra-addons:
-  ${COMPOSE_PROJECT_NAME}-backups:
+  postgres-data:
+  extra-addons:
+  backups:
 
 networks:
   default:
