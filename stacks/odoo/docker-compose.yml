@@ -12,6 +12,16 @@ services:
       SUPERUSER_PASS: ${SUPERUSER_PASS}
       DB_EXTENSION: ${DB_EXTENSION}
     restart: unless-stopped
+    labels:
+      # Habilita Traefik para TCP (no HTTP)
+      - "traefik.enable=true"
+      # Regla de enrutamiento TCP (HostSNI para distinguir instancias)
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-pg.rule=HostSNI(`pg.${ODOO_URL}`) || HostSNI(`www.pg.${ODOO_URL}`)"  # Ej: pg-instancia1.tudominio.com
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-pg.entrypoints=postgres"  # Entrypoint TCP definido en Traefik
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-pg.tls=true"  # Opcional: TLS para seguridad
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-pg.tls.certresolver=le"
+      # Backend (puerto de PostgreSQL)
+      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-pg.loadbalancer.server.port=5432"
 
   odoo:
     container_name: ${COMPOSE_PROJECT_NAME}-app
