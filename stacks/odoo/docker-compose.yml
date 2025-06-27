@@ -5,7 +5,8 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      LISTEN_IP: '*'
+      LISTEN_IP: ${LISTEN_IP}
+      LISTEN_PORT: ${LISTEN_PORT}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
       DB_NAME: ${DB_NAME}
