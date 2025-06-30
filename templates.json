@@ -8,9 +8,9 @@
       "description": "Docker image for FastAPI app.",
       "categories": ["Web Framework"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/fastapi/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/fastapi/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/templates",
+        "url": "https://github.com/business-web-services/templates",
         "stackfile": "stacks/fastapi/docker-compose.yml"
       },
       "env": [
@@ -87,9 +87,9 @@
       "categories": ["Development"],
       "note": "Deploys a Gitea instance connected to a MySQL database.",
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/gitea/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/templates",
+        "url": "https://github.com/business-web-services/templates",
         "stackfile": "stacks/gitea/docker-compose.yml"
       },
       "env": [
@@ -218,9 +218,9 @@
       "note": "Deploys a Gitea Act Runner.",
       "categories": ["CI/CD"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gitea-act-runner/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/gitea-act-runner/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/templates",
+        "url": "https://github.com/business-web-services/templates",
         "stackfile": "stacks/gitea-act-runner/docker-compose.yml"
       },
       "env": [
@@ -320,9 +320,9 @@
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
       "categories": ["Health"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gnuhealth/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/gnuhealth/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/templates",
+        "url": "https://github.com/business-web-services/templates",
         "stackfile": "stacks/gnuhealth/docker-compose.yml"
       },
       "env": [
@@ -416,9 +416,9 @@
       "description": "Open-source business apps.",
       "categories": ["project-management"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/gruposolutema/portainer-templates/main/stacks/odoo/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/portainer-templates/main/stacks/odoo/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/portainer-templates",
+        "url": "https://github.com/business-web-services/portainer-templates",
         "stackfile": "stacks/odoo/docker-compose.yml"
       },
       "env": [
@@ -516,9 +516,9 @@
       "description": "Docker image for PostgreSQL.",
       "categories": ["Database"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/postgres/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/postgres/logo/logo.png",
       "repository": {
-        "url": "https://github.com/rserverd/templates",
+        "url": "https://github.com/business-web-services/templates",
         "stackfile": "stacks/postgres/docker-compose.yml"
       },
       "env": [
