@@ -111,53 +111,30 @@
       },
       "env": [
         {
-          "default": "code.rserverd.com/gruposolutema/postgres",
+          "default": "postgres",
           "label": "PostgreSQL Image",
           "name": "POSTGRES_IMAGE"
         },
         {
-          "default": "16.6",
+          "default": "16.9",
           "label": "PostgreSQL Tag",
           "name": "POSTGRES_TAG"
         },
         {
-          "default": "*",
-          "label": "Listen Addresses",
-          "name": "LISTEN_IP"
-        },
-        {
-          "default": "5432",
-          "label": "Listen Port",
-          "name": "LISTEN_PORT"
-        },
-        {
           "default": "odoo",
           "label": "Database Username",
-          "name": "DB_USER"
+          "name": "POSTGRES_USER"
         },
         {
           "default": "odoo",
           "label": "Database Password for User",
-          "name": "DB_PASS"
+          "name": "POSTGRES_PASSWORD"
         },
         {
           "default": "postgres",
           "label": "Database Name",
-          "name": "DB_NAME"
+          "name": "POSTGRES_DB"
         },
-        {
-          "label": "Super User",
-          "name": "SUPERUSER_USER"
-        },
-        {
-          "label": "Root Password",
-          "name": "SUPERUSER_PASS"
-        },
-        {
-          "default": "unaccent", 
-          "label": "Database Extension",
-          "name": "DB_EXTENSION"
-        },  
         {
           "default": "code.rserverd.com/gruposolutema/odoo",
           "label": "Odoo Image",
