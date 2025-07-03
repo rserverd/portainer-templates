@@ -64,8 +64,8 @@ services:
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8069"
 
 volumes:
+  odoo-db:
   odoo-data:
-  postgres-data:
   extra-addons:
   backups:
 
