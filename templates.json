@@ -242,9 +242,9 @@
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
       "categories": ["Health"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/gnuhealth/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/gnuhealth/logo/logo.png",
       "repository": {
-        "url": "https://github.com/business-web-services/templates",
+        "url": "https://github.com/rserverd/templates",
         "stackfile": "stacks/gnuhealth/docker-compose.yml"
       },
       "env": [
@@ -334,13 +334,78 @@
     {
       "id": 4,
       "type": 3,
+      "title": "MariaDB",
+      "description": "MariaDB Server is a high performing open source relational database, forked from MySQL.",
+      "note": "Deploys a MariaDB Server.",
+      "categories": ["Database"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/portainer-templates/main/stacks/mariadb/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/portainer-templates",
+        "stackfile": "stacks/mariadb/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "code.rserverd.com/rserverd/mariadb",
+          "label": "MariaDB Image",
+          "name": "MARIADB_IMAGE"
+        },
+        {
+          "default": "11.4.7",
+          "label": "MariaDB Tag",
+          "name": "MARIADB_TAG"
+        },
+        {
+          "default": "America/Santo_Domingo",
+          "label": "Timezone",
+          "name": "TIMEZONE"
+        },
+        {
+          "label": "Root Password",
+          "name": "ROOT_PASS"
+        },
+        {
+          "label": "Database Name",
+          "name": "DB_NAME"
+        },
+        {
+          "label": "Database Username",
+          "name": "DB_USER"
+        },
+        {
+          "label": "Database Password",
+          "name": "DB_PASS"
+        },
+        {
+          "default": "mariadb.example.com",
+          "label": "URL",
+          "name": "URL"
+        }
+        {
+          "default": "proxy",
+          "label": "Network Name",
+          "name": "NETWORK"
+        }
+       ],
+      "volumes": [
+        {
+          "container": "/var/lib/mysql"
+        },
+        {
+          "container": "/logs"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": 3,
       "title": "Odoo",
       "description": "Open-source business apps.",
       "categories": ["Project-Management"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/business-web-services/portainer-templates/main/stacks/odoo/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/rserverd/portainer-templates/main/stacks/odoo/logo/logo.png",
       "repository": {
-        "url": "https://github.com/business-web-services/portainer-templates",
+        "url": "https://github.com/rserverd/portainer-templates",
         "stackfile": "stacks/odoo/docker-compose.yml"
       },
       "env": [
@@ -409,15 +474,15 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",
       "categories": ["Database"],
       "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/business-web-services/templates/main/stacks/postgres/logo/logo.png",
+      "logo": "https://raw.githubusercontent.com/rserverd/templates/main/stacks/postgres/logo/logo.png",
       "repository": {
-        "url": "https://github.com/business-web-services/templates",
+        "url": "https://github.com/rserverd/templates",
         "stackfile": "stacks/postgres/docker-compose.yml"
       },
       "env": [

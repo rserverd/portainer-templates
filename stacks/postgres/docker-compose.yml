@@ -6,8 +6,6 @@ services:
     hostname: ${COMPOSE_PROJECT_NAME}-postgres
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     restart: always
-    ports:
-      - ${POSTGRES_PORT}:5432
     environment:
       TIMEZONE: ${TIMEZONE}
       INITDB_LOCALE: ${INITDB_LOCALE}
@@ -31,11 +29,19 @@ services:
       CONTAINER_ENABLE_MONITORING: ${CONTAINER_ENABLE_MONITORING}
       MONITOR_USER: ${MONITOR_USER}
       MONITOR_PASS: ${MONITOR_PASS}
-      VIRTUAL_HOST: ${URL},www.${URL}
-      LETSENCRYPT_HOST: ${URL},www.${URL}
     volumes:
       - postgres-logs:/logs
       - postgres-data:/var/lib/postgresql/data
+    labels:
+      # Habilita Traefik para TCP (no HTTP)
+      - "traefik.enable=true"
+      # Regla de enrutamiento TCP (HostSNI para distinguir instancias)
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.rule=HostSNI(`postgres.${URL}`) || HostSNI(`www.postgres.${URL}`)"  # Ej: pg-instancia1.tudominio.com
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.entrypoints=postgres"  # Entrypoint TCP definido en Traefik
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.tls=true"  # Opcional: TLS para seguridad
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.tls.certresolver=letsencrypt"
+      # Backend (puerto de PostgreSQL)
+      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-postgres.loadbalancer.server.port=5432"
 
 volumes:
   postgres-data:
