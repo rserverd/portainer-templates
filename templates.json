@@ -351,7 +351,7 @@
           "name": "MARIADB_IMAGE"
         },
         {
-          "default": "11.4.7",
+          "default": "11.4",
           "label": "MariaDB Tag",
           "name": "MARIADB_TAG"
         },
