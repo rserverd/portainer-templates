@@ -1,0 +1,30 @@
+services:
+  android:
+    container_name: ${COMPOSE_PROJECT_NAME}-app
+    image: ${ANDROID_IMAGE}:${ANDROID_TAG}
+    restart: always
+    devices:
+      - /dev/kvm
+    environment:
+      EMULATOR_DEVICE: ${EMULATOR_DEVICE}
+      WEB_VNC: true
+    volumes:
+      - data:/home/androidusr
+    labels:
+      # Habilita Traefik para TCP (no HTTP)
+      - "traefik.enable=true"
+      # Regla de enrutamiento TCP (HostSNI para distinguir instancias)
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-app.rule=HostSNI(`${DOMAIN}`) || HostSNI(`www.${DOMAIN}`)"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-app.entrypoints=android"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-app.tls=true"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-app.tls.certresolver=letsencrypt"
+      # Backend (puerto de Android)
+      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-app.loadbalancer.server.port=6080"
+      
+volumes:
+  data:
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true

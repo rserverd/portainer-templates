@@ -1,8 +1,49 @@
 {
   "version": "3",
   "templates": [
-    {
+      {
       "id": 1,
+      "type": 3,
+      "title": "Android",
+      "description": "Android",
+      "note": "Deploys a android instance.",
+      "categories": ["OS"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/portainer-templates/main/stacks/android/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/portainer-templates",
+        "stackfile": "stacks/android/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "budtmo/docker-android",
+          "label": "Android Image",
+          "name": "ANDROID_IMAGE"
+        },
+        {
+          "default": "emulator_11.0",
+          "label": "Android Tag",
+          "name": "ANDROID_TAG"
+        },
+        {
+          "default": "Samsung Galaxy S10",
+          "label": "Emulator Device",
+          "name": "EMULATOR_DEVICE"
+        },
+        {
+          "default": "android.example.com",
+          "label": "Domain",
+          "name": "DOMAIN"
+        },
+        {
+          "default": "proxy",
+          "label": "Network Name",
+          "name": "NETWORK"
+        }
+      ]
+      },
+    {
+      "id": 2,
       "type": 3,
       "title": "Gitea",
       "description": "Gitea setup with a MySQL database",
@@ -133,7 +174,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 3,
       "type": 3,
       "title": "Gitea Act Runner",
       "description": "Gitea Runner Setup",
@@ -236,7 +277,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 4,
       "type": 3,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
@@ -332,7 +373,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "type": 3,
       "title": "MariaDB",
       "description": "MariaDB Server is a high performing open source relational database, forked from MySQL.",
@@ -397,7 +438,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "type": 3,
       "title": "Odoo",
       "description": "Open-source business apps.",
@@ -474,7 +515,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",
