@@ -372,8 +372,79 @@
         }
       ]
     },
+
     {
       "id": 5,
+      "type": 3,
+      "title": "Grav",
+      "description": "Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS powered by PHP, Markdown, Twig, and Symfony.",
+      "categories": ["CMS"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/solutema/portainer-templates/main/stacks/grav/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/solutema/portainer-templates",
+        "stackfile": "stacks/grav/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "registry.gruposolutema.com/grav/docker-grav",
+          "label": "Grav Image",
+          "name": "GRAV_IMAGE"
+        },
+        {
+          "default": "1.7.46",
+          "label": "Grav Tag",
+          "name": "GRAV_TAG"
+        },
+        {
+          "label": "Admin User",
+          "name": "ADMIN_USER"
+        },
+        {
+          "label": "Admin Password",
+          "name": "ADMIN_PASSWORD"
+        },
+        {
+          "label": "Admin E-mail",
+          "name": "ADMIN_EMAIL"
+        },
+        {
+          "default": "en",
+          "label": "Admin Language",
+          "name": "ADMIN_LANG"
+        },
+        {
+          "label": "Admin Full Name",
+          "name": "ADMIN_FULLNAME"
+        },
+        {
+          "label": "Admin Title",
+          "name": "ADMIN_TITLE"
+        },
+        {
+          "default": "America/Santo_Domingo",
+          "label": "Time Zone",
+          "name": "TIMEZONE"
+        },
+        {
+          "default": "example.com",
+          "label": "Domain",
+          "name": "DOMAIN"
+        },
+        {
+          "default": "proxy",
+          "label": "Network Name",
+          "name": "NETWORK"
+        }
+     ],
+      "volumes": [
+        {
+          "container": "/var/www/html"
+        }
+        ]
+      },
+    {
+      "id": 6,
       "type": 3,
       "title": "MariaDB",
       "description": "MariaDB Server is a high performing open source relational database, forked from MySQL.",
@@ -438,7 +509,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": 3,
       "title": "Odoo",
       "description": "Open-source business apps.",
@@ -515,7 +586,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",
@@ -680,6 +751,176 @@
         },
         {
           "container": "/logs"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": 3,
+      "title": "WordPress",
+      "description": "WordPress setup with a Mariadb database",
+      "note": "Deploys a WordPress instance connected to a Mariadb database.",
+      "categories": ["CMS"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/rserverd/portainer-templates/main/stacks/wordpress/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/rserverd/portainer-templates",
+        "stackfile": "stacks/wordpress/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "code.rserverd.com/rserverd/mariadb",
+          "label": "Database image",
+          "name": "MARIADB_IMAGE"
+        },
+        {
+          "default": "11.4",
+          "label": "Database tag",
+          "name": "MARIADB_TAG"
+        },
+        {
+          "default": "America/Santo_Domingo",
+          "label": "Timezone",
+          "name": "TIMEZONE"
+        },
+        {
+          "label": "MariaDB Root Password",
+          "name": "ROOT_PASS"
+        },
+        {
+          "default": "wordpress_database",
+          "label": "MariaDB Database Name",
+          "name": "DB_NAME"
+        },
+        {
+          "default": "wordpress_user",
+          "label": "MariaDB Database Username",
+          "name": "DB_USER"
+        },
+        {
+          "default": "password",
+          "label": "MariaDB Database Password",
+          "name": "DB_PASS"
+        },
+        {
+          "default": "wp_",
+          "label": "MariaDB Database prefix",
+          "name": "DB_PREFIX"
+        }, 
+        {
+          "default": "phpmyadmin",
+          "label": "Phpmyadmin image",
+          "name": "PHPMYADMIN_IMAGE"
+        },
+        {
+          "default": "5.2.1-apache",
+          "label": "Phpmyadmin tag",
+          "name": "PHPMYADMIN_TAG"
+        },
+        {
+          "default": "phpmyadmin.example.com",
+          "label": "Phpmyadmin domain",
+          "name": "PHPMYADMIN_DOMAIN"
+        },
+        {
+          "default": "true",
+          "label": "Enable HTTPS reverse proxy",
+          "name": "ENABLE_HTTPS_REVERSE_PROXY"
+        },                
+        {
+          "default": "code.rserverd.com/rserverd/wordpress",
+          "label": "Wordpress image",
+          "name": "WORDPRESS_IMAGE"
+        },
+        {
+          "default": "php8.4-6.8.1-alpine-latest",
+          "label": "Wordpress tag",
+          "name": "WORDPRESS_TAG"
+        },
+        {
+          "default": "jose.arturo.garcia@gmail.com",
+          "label": "Admin email",
+          "name": "ADMIN_EMAIL"
+        },
+        {
+          "default": "admin",
+          "label": "Admin user",
+          "name": "ADMIN_USER"
+        },
+        {
+          "default": "password",
+          "label": "Admin password",
+          "name": "ADMIN_PASS"
+        },
+        {
+          "default": "false",
+          "label": "Debug mode",
+          "name": "DEBUG_MODE"
+        },
+        {
+          "default": "example.com",
+          "label": "Site url",
+          "name": "SITE_URL"
+        },     
+        {
+          "default": "Docker Wordpress",
+          "label": "Site title",
+          "name": "SITE_TITLE"
+        },
+        {
+          "default": "es_ES",
+          "label": "Site locale",
+          "name": "SITE_LOCALE"
+        },
+        {
+          "default": "true",
+          "label": "Wp Cache",
+          "name": "WP_CACHE"
+        },
+        {
+          "default": "redis-gruposolutema-server",
+          "label": "Wp redis host",
+          "name": "WP_REDIS_HOST"
+        },
+        {
+          "default": "6379",
+          "label": "Wp redis port",
+          "name": "WP_REDIS_PORT"
+        },
+        {
+          "default": "arturo0510",
+          "label": "Wp Redis Password",
+          "name": "WP_REDIS_PASSWORD"
+        },
+        {
+          "default": "false",
+          "label": "Rotate keys",
+          "name": "ROTATE_KEYS"
+        }, 
+        {
+          "default": "128M",
+          "label": "PHP Memory Limit",
+          "name": "PHP_MEMORY_LIMIT"
+        }, 
+        {
+          "default": "10G",
+          "label": "Nginx Upload Max Size",
+          "name": "NGINX_UPLOAD_MAX_SIZE"
+        }, 
+        {
+          "default": "300",
+          "label": "PHP tIMEOUT",
+          "name": "PHP_TIMEOUT"
+        }, 
+        {
+          "default": "all",
+          "label": "Update mode",
+          "name": "UPDATE_MODE"
+        },
+        {
+          "default": "proxy",
+          "label": "Network name",
+          "name": "NETWORK"
         }
       ]
     }
