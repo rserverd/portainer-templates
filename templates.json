@@ -878,7 +878,7 @@
           "name": "WP_CACHE"
         },
         {
-          "default": "redis-gruposolutema-server",
+          "default": "redis-example-server",
           "label": "Wp redis host",
           "name": "WP_REDIS_HOST"
         },
@@ -888,7 +888,7 @@
           "name": "WP_REDIS_PORT"
         },
         {
-          "default": "arturo0510",
+          "default": "password",
           "label": "Wp Redis Password",
           "name": "WP_REDIS_PASSWORD"
         },
@@ -903,7 +903,7 @@
           "name": "PHP_MEMORY_LIMIT"
         }, 
         {
-          "default": "10G",
+          "default": "2G",
           "label": "Nginx Upload Max Size",
           "name": "NGINX_UPLOAD_MAX_SIZE"
         }, 
