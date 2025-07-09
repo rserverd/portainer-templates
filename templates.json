@@ -380,7 +380,7 @@
           "default": "mariadb.example.com",
           "label": "URL",
           "name": "URL"
-        }
+        },
         {
           "default": "proxy",
           "label": "Network Name",
