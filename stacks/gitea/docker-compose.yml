@@ -51,18 +51,18 @@ services:
       GITEA__mailer__USER: ${GITEA_USER}
       GITEA__mailer__PASSWD: ${GITEA_PASSWD}
     labels:
+      # Habilita Traefik para HTTP (no TCP)
       - "traefik.enable=true"
-      # Redirecciona HTTP -> HTTPS
+      # HTTP → HTTPS (middleware definido en https_redirection.yml)
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-app.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-app.entrypoints=web"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-app.middlewares=${COMPOSE_PROJECT_NAME}-https-redirect"
-      - "traefik.http.middlewares.${COMPOSE_PROJECT_NAME}-https-redirect.redirectscheme.scheme=https"
-      # HTTPS (con SSL automático)
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-app.middlewares=https_redirection@file"
+      # HTTPS (SSL automático)
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls=true"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
-      # Servicio backend Odoo
+      # Servicio backend (puerto Gitea)
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=3000"
 
 volumes:
