@@ -1,49 +1,8 @@
 {
   "version": "3",
   "templates": [
-      {
-      "id": 1,
-      "type": 3,
-      "title": "Android",
-      "description": "Android",
-      "note": "Deploys a android instance.",
-      "categories": ["OS"],
-      "platform": "linux",
-      "logo": "https://raw.githubusercontent.com/rserverd/portainer-templates/main/stacks/android/logo/logo.png",
-      "repository": {
-        "url": "https://github.com/rserverd/portainer-templates",
-        "stackfile": "stacks/android/docker-compose.yml"
-      },
-      "env": [
-        {
-          "default": "budtmo/docker-android",
-          "label": "Android Image",
-          "name": "ANDROID_IMAGE"
-        },
-        {
-          "default": "emulator_11.0",
-          "label": "Android Tag",
-          "name": "ANDROID_TAG"
-        },
-        {
-          "default": "Samsung Galaxy S10",
-          "label": "Emulator Device",
-          "name": "EMULATOR_DEVICE"
-        },
-        {
-          "default": "android.example.com",
-          "label": "Domain",
-          "name": "DOMAIN"
-        },
-        {
-          "default": "proxy",
-          "label": "Network Name",
-          "name": "NETWORK"
-        }
-      ]
-      },
     {
-      "id": 2,
+      "id": 1,
       "type": 3,
       "title": "Gitea",
       "description": "Gitea setup with a MySQL database",
@@ -174,7 +133,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "type": 3,
       "title": "Gitea Act Runner",
       "description": "Gitea Runner Setup",
@@ -277,7 +236,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 3,
       "type": 3,
       "title": "GNU Health",
       "description": "Docker image for GNU Health a free/libre health and hospital information system.",
@@ -372,9 +331,8 @@
         }
       ]
     },
-
     {
-      "id": 5,
+      "id": 4,
       "type": 3,
       "title": "Grav",
       "description": "Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS powered by PHP, Markdown, Twig, and Symfony.",
@@ -441,10 +399,10 @@
         {
           "container": "/var/www/html"
         }
-        ]
-      },
+      ]
+    },
     {
-      "id": 6,
+      "id": 5,
       "type": 3,
       "title": "MariaDB",
       "description": "MariaDB Server is a high performing open source relational database, forked from MySQL.",
@@ -509,7 +467,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 6,
       "type": 3,
       "title": "Odoo",
       "description": "Open-source business apps.",
@@ -586,7 +544,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 7,
       "type": 3,
       "title": "PostgreSQL",
       "description": "Docker image for PostgreSQL.",
@@ -751,6 +709,96 @@
         },
         {
           "container": "/logs"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": 3,
+      "title": "Redis",
+      "description": "Open-source in-memory data structure store",
+      "note": "Deploys a Redis server instance as an application cache or quick-response database.",
+      "categories": ["Database"],
+      "platform": "linux",
+      "logo": "https://raw.githubusercontent.com/gruposolutema/portainer-templates/main/stacks/redis/logo/logo.png",
+      "repository": {
+        "url": "https://github.com/gruposolutema/portainer-templates",
+        "stackfile": "stacks/redis/docker-compose.yml"
+      },
+      "env": [
+        {
+          "default": "code.rserverd.com/gruposolutema/redis",
+          "label": "Redis image",
+          "name": "REDIS_IMAGE"
+        },
+        {
+          "default": "7.4.1",
+          "label": "Redis tag",
+          "name": "REDIS_TAG"
+        },
+        {
+          "default": "6379",
+          "label": "Redis Port",
+          "name": "REDIS_PORT"
+        },
+        {
+          "default": "America/Santo_Domingo",
+          "label": "Timezone",
+          "name": "TIMEZONE"
+        },
+        {
+          "default": "true",
+          "label": "Enable Logfiles",
+          "name": "ENABLE_LOGS"
+        },
+        {
+          "default": "notice",
+          "label": "Log level",
+          "name": "LOG_LEVEL"
+        },
+        {
+          "label": "Redis Password",
+          "name": "REDIS_PASS"
+        },
+        {
+          "default": "redis/redisinsight",
+          "label": "Insight Image",
+          "name": "INSIGHT_IMAGE"
+        },
+        {
+          "default": "2.62.0",
+          "label": "Insight Tag",
+          "name": "INSIGHT_TAG"
+        },
+        {
+          "default": "5540",
+          "label": "Insight port",
+          "name": "INSIGHT_PORT"
+        },
+        {
+          "default": "info",
+          "label": "RI log level",
+          "name": "RI_LOG_LEVEL"
+        },
+        {
+          "default": "true",
+          "label": "RI files logger",
+          "name": "RI_FILES_LOGGER"
+        },
+        {
+          "default": "true",
+          "label": "RI stdout logger",
+          "name": "RI_STDOUT_LOGGER"
+        },
+        {
+          "default": "redis.example.com",
+          "label": "Insight domain",
+          "name": "INSIGHT_DOMAIN"
+        },
+        {
+          "default": "proxy",
+          "label": "Network name",
+          "name": "NETWORK"
         }
       ]
     },
