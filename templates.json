@@ -732,14 +732,9 @@
           "name": "REDIS_IMAGE"
         },
         {
-          "default": "7.4.1",
+          "default": "8.0.3",
           "label": "Redis tag",
           "name": "REDIS_TAG"
-        },
-        {
-          "default": "6379",
-          "label": "Redis Port",
-          "name": "REDIS_PORT"
         },
         {
           "default": "America/Santo_Domingo",
@@ -771,11 +766,6 @@
           "name": "INSIGHT_TAG"
         },
         {
-          "default": "5540",
-          "label": "Insight port",
-          "name": "INSIGHT_PORT"
-        },
-        {
           "default": "info",
           "label": "RI log level",
           "name": "RI_LOG_LEVEL"
@@ -793,7 +783,7 @@
         {
           "default": "redis.example.com",
           "label": "Insight domain",
-          "name": "INSIGHT_DOMAIN"
+          "name": "DOMAIN"
         },
         {
           "default": "proxy",
