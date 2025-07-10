@@ -761,7 +761,7 @@
           "name": "INSIGHT_IMAGE"
         },
         {
-          "default": "2.62.0",
+          "default": "2.70.1",
           "label": "Insight Tag",
           "name": "INSIGHT_TAG"
         },
