@@ -727,7 +727,7 @@
       },
       "env": [
         {
-          "default": "code.rserverd.com/gruposolutema/redis",
+          "default": "code.rserverd.com/rserverd/redis",
           "label": "Redis image",
           "name": "REDIS_IMAGE"
         },
