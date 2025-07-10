@@ -41,15 +41,18 @@ services:
       - insight:/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-insight.rule=Host(`pg.${DOMAIN}`) || Host(`www.pg.${DOMAIN}`)"
+      # HTTP → HTTPS (middleware definido en https_redirection.yml)
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-insight.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-insight.entrypoints=web"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-insight.middlewares=insight-https-redirect"
-      - "traefik.http.middlewares.insight-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.insight.rule=Host(`redis.${DOMAIN}`) || Host(`www.redis.${DOMAIN}`)"
-      - "traefik.http.routers.insight.entrypoints=websecure"
-      - "traefik.http.routers.insight.tls=true"
-      - "traefik.http.routers.insight.tls.certresolver=letsencrypt"
-      - "traefik.http.services.insight.loadbalancer.server.port=5540"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-insight.middlewares=https_redirection@file"
+      # HTTPS (SSL automático)
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+
+      # Servicio backend (puerto Insight)
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=5540"
       
 volumes:
   data:
