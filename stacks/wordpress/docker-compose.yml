@@ -16,7 +16,7 @@ services:
       - "traefik.enable=true"
       # Regla de enrutamiento TCP (HostSNI para distinguir instancias)
       - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-mariadb.rule=HostSNI(`mariadb.${SITE_URL}`) || HostSNI(`www.mariadb.${SITE_URL}`)"
-      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-mariadb.entrypoints=mariadb"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-mariadb.entrypoints=mysql"
       - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-mariadb.tls=true"
       - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-mariadb.tls.certresolver=letsencrypt"
       # Backend (puerto de MariaDB)
@@ -51,8 +51,6 @@ services:
     restart: unless-stopped
     depends_on:
       - mariadb
-    links:
-      - mariadb:mariadb
     volumes:
       - data:/www/wordpress
       - logs:/www/logs
@@ -60,6 +58,7 @@ services:
       ENABLE_HTTPS_REVERSE_PROXY: ${ENABLE_HTTPS_REVERSE_PROXY}
       CONTAINER_NAME: ${COMPOSE_PROJECT_NAME}-app
       DB_HOST: ${COMPOSE_PROJECT_NAME}-mariadb
+      DB_PORT: 3306
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASS: ${DB_PASS}
