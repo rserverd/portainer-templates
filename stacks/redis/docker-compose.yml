@@ -23,7 +23,7 @@ services:
       - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-redis.tls=true"
       - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-redis.tls.certresolver=letsencrypt"
       # Backend (puerto de Redis)
-      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-pg.loadbalancer.server.port=6379"
+      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-redis.loadbalancer.server.port=6379"
 
   insight:
     container_name: ${COMPOSE_PROJECT_NAME}-insight
