@@ -15,6 +15,16 @@ services:
       DB_EXTENSION: ${DB_EXTENSION}
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    labels:
+      # Habilita Traefik para TCP (no HTTP)
+      - "traefik.enable=true"
+      # Regla de enrutamiento TCP (HostSNI para distinguir instancias)
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.rule=HostSNI(`postgres.${DOMAIN}`) || HostSNI(`www.postgres.${DOMAIN}`)"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.entrypoints=postgres"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.tls=true"
+      - "traefik.tcp.routers.${COMPOSE_PROJECT_NAME}-postgres.tls.certresolver=letsencrypt"
+      # Backend (puerto de PostgreSQL)
+      - "traefik.tcp.services.${COMPOSE_PROJECT_NAME}-postgres.loadbalancer.server.port=5432"
 
   server:
     container_name: ${COMPOSE_PROJECT_NAME}-server
@@ -23,15 +33,26 @@ services:
     restart: always
     environment:
       TZ: ${TIMEZONE}
-      VIRTUAL_PORT: 8000
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASS}
-      VIRTUAL_HOST: ${URL},www.${URL}
-      LETSENCRYPT_HOST: ${URL},www.${URL}
     volumes:
       - "gnuhealth-data:/var/lib/trytond/db"
     depends_on:
       - postgres
+    labels:
+      - "traefik.enable=true"
+      # HTTP → HTTPS (middleware definido en https_redirection.yml)
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-server.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-server.entrypoints=web"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-server.middlewares=https_redirection@file"
+      # HTTPS (SSL automático)
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls=true"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt"
+
+      # Servicio backend (puerto GNU Health)
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8000"  
 
   gnuhealth-cron:
     container_name: ${COMPOSE_PROJECT_NAME}-cron
